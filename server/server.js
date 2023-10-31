@@ -29,7 +29,7 @@ db.once('open', async () => {
   await apolloServer.start()
   
   app.use('/graphql', expressMiddleware(apolloServer, {
-    context: async ({ req }) => ({ token: req.headers.token })
+    context: authMiddleware
   }));
 
   app.listen(PORT, () => {
