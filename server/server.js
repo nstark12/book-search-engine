@@ -14,7 +14,7 @@ const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   context: authMiddleware,
-  persistedQueries: false
+  // persistedQueries: false
 })
 
 
@@ -22,7 +22,7 @@ const apolloServer = new ApolloServer({
 const startApolloServer = async (typeDefs, resolvers) => {
   await apolloServer.start()
   
-  app.use(express.urlencoded({ extended: true }));
+  app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   
   // if we're in production, serve client/build as static assets
@@ -33,8 +33,11 @@ const startApolloServer = async (typeDefs, resolvers) => {
   app.use('/graphql', expressMiddleware(apolloServer))
 
   db.once('open', () => {
-    console.log(`🌍 Now listening on http://localhost:${PORT}`)
-    console.log(`GraphQL available at http://localhost:${PORT}/graphql`)
+    app.listen(PORT, () => {
+      console.log(`🌍 Now listening on http://localhost:${PORT}`)
+      console.log(`GraphQL available at http://localhost:${PORT}/graphql`)
+
+    })
   })
 
 };
