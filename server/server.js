@@ -30,7 +30,9 @@ const startApolloServer = async (typeDefs, resolvers) => {
     app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
-  app.use('/graphql', expressMiddleware(apolloServer))
+  app.use('/graphql', expressMiddleware(apolloServer, {
+    context: authMiddleware
+  }))
 
   db.once('open', () => {
     app.listen(PORT, () => {

@@ -13,16 +13,16 @@ const typeDefs = `
     type Book {
         bookId: ID!
         authors: [String]
-        description: String!
+        description: String
         image: String
         link: String
         title: String!
     }
 
     input BookInput {
+        bookId: ID
         authors: [String]
         description: String
-        bookId: ID
         image: String
         link: String
         title: String
