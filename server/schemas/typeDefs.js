@@ -16,7 +16,7 @@ const typeDefs = `
         description: String
         image: String
         link: String
-        title: String!
+        title: String
     }
 
     input BookInput {
