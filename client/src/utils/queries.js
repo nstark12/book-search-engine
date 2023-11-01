@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
-export const QUERY_ME = gql`
-    query QUERY_ME {
+export const GET_ME = gql`
+    query GET_ME {
         me {
         _id
         bookCount
