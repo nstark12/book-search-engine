@@ -45,4 +45,4 @@ const typeDefs = `
 
 `
 
-module.exports = typeDefsß
+module.exports = typeDefs
